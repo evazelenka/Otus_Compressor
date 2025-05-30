@@ -1,10 +1,10 @@
-package ru.otus;
+package ru.otus.rlecompress;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class CompressRLE implements ICompress{
+public class CompressRLE implements ICompress {
     @Override
     public String getName() {
         return "RLE";

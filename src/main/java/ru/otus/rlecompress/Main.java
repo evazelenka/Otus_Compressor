@@ -1,4 +1,4 @@
-package ru.otus;
+package ru.otus.rlecompress;
 //Основы сжатия данных: создаем RLE архиватор(run length encoding, кодирование длин серий)
 //Демо-занятие курса "Алгоритмы и структуры данных"
 
