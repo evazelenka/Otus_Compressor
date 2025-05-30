@@ -8,6 +8,6 @@ public interface ICompress {
     String getName();
     String getExt();
     public void compress(InputStream input, OutputStream output) throws IOException;
-    public void decompress(InputStream input, OutputStream output);
+    public void decompress(InputStream input, OutputStream output) throws IOException;
 
 }

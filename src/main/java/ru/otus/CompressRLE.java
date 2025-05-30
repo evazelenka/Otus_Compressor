@@ -7,7 +7,7 @@ import java.io.OutputStream;
 public class CompressRLE implements ICompress{
     @Override
     public String getName() {
-        return "fileZip";
+        return "RLE";
     }
 
     @Override
@@ -27,18 +27,19 @@ public class CompressRLE implements ICompress{
             currentByte = input.read();
             if(currentByte == -1)
                 break;
-            if(currentByte == prevByte)
+            if(currentByte == prevByte && count < 255)
                 count++;
             else
             {
                 output.write(prevByte);
-                output.write(count);
+                output.write(String.valueOf(count).getBytes());
                 prevByte = currentByte;
                 count = 1;
+                output.flush();
             }
         }
         output.write(prevByte);
-        output.write(count);
+        output.write(String.valueOf(count).getBytes());
         output.flush();
     }
 
