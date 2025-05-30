@@ -44,9 +44,17 @@ public class Main {
 
     private static void decompress(ICompress alg, String fileZip, String fileUnzip) throws IOException {
         System.out.println("decompress using " + alg.getName());
+        long fileZipLength = new File(fileZip).length();
+        long startTime = System.currentTimeMillis();
         try(FileInputStream input = new FileInputStream(fileZip);
             FileOutputStream output = new FileOutputStream(fileUnzip)){
             alg.decompress(input, output);
         }
+        long finishTime = System.currentTimeMillis();
+        long fileUnzipLength = new File(fileUnzip).length();
+
+        System.out.println("Zip size: " + fileZipLength);
+        System.out.println("Unzip size: " + fileUnzipLength);
+        System.out.println("Time: " + (finishTime - startTime) + " ms");
     }
 }

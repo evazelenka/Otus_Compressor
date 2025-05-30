@@ -32,19 +32,28 @@ public class CompressRLE implements ICompress{
             else
             {
                 output.write(prevByte);
-                output.write(String.valueOf(count).getBytes());
+//                output.write(String.valueOf(count).getBytes());
+                output.write(count);
                 prevByte = currentByte;
                 count = 1;
                 output.flush();
             }
         }
         output.write(prevByte);
-        output.write(String.valueOf(count).getBytes());
+//        output.write(String.valueOf(count).getBytes());
+        output.write(count);
         output.flush();
     }
 
     @Override
-    public void decompress(InputStream input, OutputStream output) {
-
+    public void decompress(InputStream input, OutputStream output) throws IOException {
+        int value;
+        int count;
+        while(true){
+            value = input.read(); if(value == -1) break;
+            count = input.read();
+            for (int i = 0; i < count; i++)
+                output.write(value);
+        }
     }
 }
