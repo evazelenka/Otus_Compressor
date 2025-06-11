@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CompressHuffman implements ICompress {
-    private int [] freqs = new int [256];
+    private int [] freqs;
 
     @Override
     public String getName() {
@@ -23,7 +23,7 @@ public class CompressHuffman implements ICompress {
 
     @Override
     public void prepare(InputStream input) throws IOException{
-        Arrays.fill(freqs, 0);
+        freqs = new int[256];
         int value;
         while(true){
             value = input.read();
@@ -34,11 +34,29 @@ public class CompressHuffman implements ICompress {
 
     @Override
     public void compress(InputStream input, OutputStream output) throws IOException {
+        for (int i = 0; i < 256; i++) {
+            output.write(freqs[i]);
+            Node root = buidTree();
+            
+        }
+    }
+    
+    private Node buildTree(){
+        OrderedPriorityQueue q = new OrderedPriorityQueue();
 
+        for (int i = 0; i < ; i++) {
+            
+        }
     }
 
     @Override
-    public void decompress(InputStream input, OutputStream output) throws IOException {
-
+    public void decompress(InputStream input, OutputStream output) throws IOException
+    {
+        freqs = new int[256];
+        for (int i = 0; i <256 ; i++) {
+            freqs[i] = input.read();
+        }
+        Node root = buildTree();
+        BitReader reader = new
     }
 }
